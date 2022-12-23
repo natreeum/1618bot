@@ -8,6 +8,7 @@ const {
   linkMiningAmount,
   linkMiningChannel,
 } = require(`../valueSettings`);
+const { SlashCommandSubcommandBuilder } = require('discord.js');
 
 async function readMessage(message) {
   if (message.author.bot) return;
@@ -30,7 +31,7 @@ async function readMessage(message) {
       // TODO : add point
       const addRes = await addPoint(addData);
       await message.channel.send(
-        `Link Mining Success! **${linkMiningAmount} ${symbol}** Added\n<@${userId}> Balance : ${addRes.point}`
+        `Link Mining Success! **${linkMiningAmount} ${symbol}** Added\n<@${userId}> Balance : **${addRes.point} ${symbol}**`
       );
     } else return;
     return;
@@ -48,7 +49,7 @@ async function readMessage(message) {
     // TODO : add point
     const addRes = await addPoint(addData);
     await message.channel.send(
-      `Meme Mining Success! **${memeMiningAmount} ${symbol}** Added\n<@${userId}> Balance : ${addRes.point}`
+      `Meme Mining Success! **${memeMiningAmount} ${symbol}** Added\n<@${userId}> Balance : **${addRes.point} ${symbol}**`
     );
     return;
   }

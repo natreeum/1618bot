@@ -3,11 +3,9 @@ const {
   updateReferredUserData,
   updateReferStatus,
 } = require(`../prismaScripts/refer`);
-const { getDailyMiningInfo } = require(`../prismaScripts/dailycheck`);
 const { getUser, createUser } = require(`../prismaScripts/user`);
 const {
   symbol,
-  dailyMiningLimit,
   referMiningPoint,
   dailyInviteLimit,
 } = require(`../valueSettings`);
@@ -55,17 +53,8 @@ const refer = async (interaction) => {
 
   // if invited less than 3 users
   // check dailymining Amount, calc Minable point
-  const getDailyMiningInfoRes = await getDailyMiningInfo(referredUserId);
-  let totalMined = 0;
   let availableReferMiningPoint = referMiningPoint;
-  if (getDailyMiningInfoRes) {
-    const { invitepoint, chatminingpoint, dailycheck } = getDailyMiningInfoRes;
-    totalMined = invitepoint + chatminingpoint + dailycheck;
-  }
-  if (totalMined + referMiningPoint > dailyMiningLimit) {
-    availableReferMiningPoint =
-      totalMined + referMiningPoint - dailyMiningLimit;
-  }
+
   // add point to referred user
   const data = {
     discordId: referredUserId,

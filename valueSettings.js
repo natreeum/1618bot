@@ -1,16 +1,9 @@
-const miningRate = 10;
-const dailyCheckAmount = 16;
-const dailyMiningLimit = 100;
-const referMiningPoint = 18;
-const symbol = 'TANP';
 const dailyInviteLimit = 3;
 
 module.exports = {
-  miningRate,
-  dailyCheckAmount,
-  dailyMiningLimit,
-  referMiningPoint,
-  symbol,
+  dailyCheckAmount: 16,
+  referMiningPoint: 18,
+  symbol: 'TANP',
   dailyInviteLimit,
   memeMiningAmount: 6,
   memeMiningChannel: '1055740196794142811',

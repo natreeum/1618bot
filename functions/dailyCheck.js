@@ -1,14 +1,7 @@
-const {
-  dailycheck,
-  getDailyMiningInfo,
-} = require(`../prismaScripts/dailycheck`);
+const { dailycheck } = require(`../prismaScripts/dailycheck`);
 const { getUser } = require(`../prismaScripts/user`);
 const { addPoint } = require(`../prismaScripts/point`);
-const {
-  symbol,
-  dailyCheckAmount,
-  dailyMiningLimit,
-} = require(`../valueSettings`);
+const { symbol, dailyCheckAmount } = require(`../valueSettings`);
 
 async function dailyCheck(interaction) {
   const userId = interaction.user.id;
@@ -40,20 +33,7 @@ async function dailyCheck(interaction) {
     return;
   }
 
-  // daily mininglimit check
-  const dailyMined = await getDailyMiningInfo(userId);
-  let dailyMinedPnt = 0;
-  if (dailyMined)
-    dailyMinedPnt =
-      dailyMined.invitepoint +
-      dailyMined.chatminingpoint +
-      dailyMined.dailycheck;
-
   let addAmount = dailyCheckAmount;
-  if (dailyMinedPnt + dailyCheckAmount > dailyMiningLimit) {
-    addAmount =
-      dailyCheckAmount - (dailyMinedPnt + dailyCheckAmount - dailyMiningLimit);
-  }
 
   const data = {
     discordId: userId,
