@@ -13,10 +13,10 @@ module.exports = {
   symbol,
   dailyInviteLimit,
   memeMiningAmount: 6,
-  memeMiningChannel: '1055512365292060762',
+  memeMiningChannel: '1055740196794142811',
   memeMiningMessage: ['도굴', 'Artnapping'],
   linkMiningAmount: 6,
-  linkMiningChannel: '1055512403095335053',
+  linkMiningChannel: '1055740295058292777',
   roleId: {
     gold: '1055558429047001189',
     iron: '1055558493886746654',
