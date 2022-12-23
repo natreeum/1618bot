@@ -38,7 +38,10 @@ async function readMessage(message) {
   // memeMining
   if (messageChannel === memeMiningChannel) {
     const messageAttachmentsCnt = message.attachments.size;
-    if (messageAttachmentsCnt === 0 || messageContent !== memeMiningMessage)
+    if (
+      messageAttachmentsCnt === 0 ||
+      !memeMiningMessage.includes(messageContent)
+    )
       return;
     addData['amount'] = memeMiningAmount;
     console.log(addData);
@@ -49,19 +52,6 @@ async function readMessage(message) {
     );
     return;
   }
-
-  // let getUserRes = await getUser(userId);
-  // if (!getUserRes) getUserRes = await createUser(userId);
-
-  // console.log(message.attachments.size);
-  // console.log(message.content);
-
-  // add Point
-  // const addPointData = {
-  //   discordId: userId,
-  //   amount: chatMiningAmount,
-  // };
-  // await addPoint(addPointData);
 }
 
 module.exports = { readMessage };
