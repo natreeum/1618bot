@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int     @id @default(autoincrement())
+  discordId String  @unique
+  point     Int     @default(0)
+  lastcheck String  @default("")
+  lastchat  String  @default("")
+  referuser Boolean @default(false)
+}
+
+model DailyMining {
+  discordId       String @id
+  invitepoint     Int    @default(0)
+  invitecount     Int    @default(0)
+  chatminingpoint Int    @default(0)
+  dailycheck      Int    @default(0)
+}
