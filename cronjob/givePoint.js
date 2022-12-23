@@ -12,10 +12,6 @@ const givePointToRoles = async (client) => {
     else if (e._roles.includes(roleId.iron)) ironUsers.push(e.user.id);
     else if (e._roles.includes(roleId.wood)) woodUsers.push(e.user.id);
   });
-
-  console.log(goldUsers);
-  console.log(ironUsers);
-  console.log(woodUsers);
 };
 
 module.exports = { givePointToRoles };
