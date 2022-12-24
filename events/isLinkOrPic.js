@@ -26,12 +26,6 @@ async function readMessage(message) {
     discordId: userId,
   };
 
-  const memeCnt = await getMemeMiningCount(userId);
-  const linkCnt = await getLinkMiningCount(userId);
-
-  if (memeCnt >= memeMiningLimit) return;
-  if (linkCnt >= linkMiningLimit) return;
-
   let getUserRes = await getUser(userId);
   if (!getUserRes) getUserRes = await createUser(userId);
 
@@ -39,6 +33,8 @@ async function readMessage(message) {
   if (messageChannel === linkMiningChannel) {
     const slicedMessage = messageContent.slice(0, 4);
     if (slicedMessage === 'http') {
+      const linkCnt = await getLinkMiningCount(userId);
+      if (linkCnt >= linkMiningLimit) return;
       addData['amount'] = linkMiningAmount;
       const addRes = await addPoint(addData);
       await addLinkMiningCount(userId);
@@ -56,6 +52,8 @@ async function readMessage(message) {
       !memeMiningMessage.includes(messageContent)
     )
       return;
+    const memeCnt = await getMemeMiningCount(userId);
+    if (memeCnt >= memeMiningLimit) return;
     addData['amount'] = memeMiningAmount;
     const addRes = await addPoint(addData);
     await addMemeMiningCount(userId);
