@@ -24,7 +24,7 @@ const givePointToRoles = async (client) => {
     if (message[message.length - 1].length + content.length > 2000) {
       message.push(content);
     } else {
-      message[message.length - 1] += content;
+      message[message.length - 1] = `${message[message.length - 1]}+${content}`;
     }
   };
   // gold
@@ -78,6 +78,7 @@ const givePointToRoles = async (client) => {
 
   const channel = await client.channels.fetch(monthlyMiningChannel);
   message.forEach(async (e) => {
+    console.log(e);
     await channel.send(e);
   });
 };
