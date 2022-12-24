@@ -1,10 +1,8 @@
-const dailyInviteLimit = 3;
-
 module.exports = {
   dailyCheckAmount: 16,
   referMiningPoint: 18,
   symbol: 'TANP',
-  dailyInviteLimit,
+  dailyInviteLimit: 50,
   memeMiningAmount: 6,
   memeMiningChannel: '1055740196794142811',
   memeMiningMessage: ['도굴', 'Artnapping'],
@@ -20,4 +18,5 @@ module.exports = {
     iron: 61,
     wood: 34,
   },
+  monthlyMiningChannel: '1055736731187564624',
 };

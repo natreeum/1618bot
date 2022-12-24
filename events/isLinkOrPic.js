@@ -8,7 +8,6 @@ const {
   linkMiningAmount,
   linkMiningChannel,
 } = require(`../valueSettings`);
-const { SlashCommandSubcommandBuilder } = require('discord.js');
 
 async function readMessage(message) {
   if (message.author.bot) return;
