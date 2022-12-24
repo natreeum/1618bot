@@ -45,7 +45,7 @@ const givePointToRoles = async (client) => {
   });
   // iron
   addMessage(`<@&${roleId.iron}> IRON Shovel monthly mining!\n`);
-  goldUsers.forEach(async (userId) => {
+  ironUsers.forEach(async (userId) => {
     const data = {
       discordId: userId,
       amount: rolePoint.iron,
@@ -61,7 +61,7 @@ const givePointToRoles = async (client) => {
   });
   // wood
   addMessage(`<@&${roleId.wood}> WOOD Shovel monthly mining!\n`);
-  goldUsers.forEach(async (userId) => {
+  woodUsers.forEach(async (userId) => {
     const data = {
       discordId: userId,
       amount: rolePoint.wood,
