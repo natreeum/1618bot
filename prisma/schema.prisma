@@ -6,13 +6,12 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  discordId String  @unique
+  discordId String  @id
   point     Int     @default(0)
   lastcheck String  @default("")
   lastchat  String  @default("")
