@@ -24,7 +24,7 @@ const givePointToRoles = async (client) => {
     if (message[message.length - 1].length + content.length > 2000) {
       message.push(content);
     } else {
-      message[message.length - 1] = `${message[message.length - 1]}+${content}`;
+      message[message.length - 1] = `${message[message.length - 1]}${content}`;
     }
   };
   // gold
@@ -35,13 +35,13 @@ const givePointToRoles = async (client) => {
       amount: rolePoint.gold,
     };
     const addRes = await addPoint(data);
-    let addResMessage = '';
     if (addRes) {
-      addResMessage = `[SUCCESS] <@${userId}> received **${rolePoint.gold} ${symbol}**\n`;
+      addMessage(
+        `[SUCCESS] <@${userId}> received **${rolePoint.gold} ${symbol}**\n`
+      );
     } else {
-      addResMessage = `[Failed] <@${userId}> needs to contact admin\n`;
+      addMessage(`[Failed] <@${userId}> needs to contact admin\n`);
     }
-    addMessage(addResMessage);
   });
   // iron
   addMessage(`<@&${roleId.iron}> IRON Shovel monthly mining!\n`);
@@ -51,13 +51,13 @@ const givePointToRoles = async (client) => {
       amount: rolePoint.iron,
     };
     const addRes = await addPoint(data);
-    let addResMessage = '';
     if (addRes) {
-      addResMessage = `[SUCCESS] <@${userId}> received **${rolePoint.iron} ${symbol}**\n`;
+      addMessage(
+        `[SUCCESS] <@${userId}> received **${rolePoint.iron} ${symbol}**\n`
+      );
     } else {
-      addResMessage = `[Failed] <@${userId}> needs to contact admin\n`;
+      addMessage(`[Failed] <@${userId}> needs to contact admin\n`);
     }
-    addMessage(addResMessage);
   });
   // wood
   addMessage(`<@&${roleId.wood}> WOOD Shovel monthly mining!\n`);
@@ -67,18 +67,17 @@ const givePointToRoles = async (client) => {
       amount: rolePoint.wood,
     };
     const addRes = await addPoint(data);
-    let addResMessage = '';
     if (addRes) {
-      addResMessage = `[SUCCESS] <@${userId}> received **${rolePoint.wood} ${symbol}**\n`;
+      addMessage(
+        `[SUCCESS] <@${userId}> received **${rolePoint.wood} ${symbol}**\n`
+      );
     } else {
-      addResMessage = `[Failed] <@${userId}> needs to contact admin\n`;
+      addMessage(`[Failed] <@${userId}> needs to contact admin\n`);
     }
-    addMessage(addResMessage);
   });
 
   const channel = await client.channels.fetch(monthlyMiningChannel);
   message.forEach(async (e) => {
-    console.log(e);
     await channel.send(e);
   });
 };
