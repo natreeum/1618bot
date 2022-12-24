@@ -24,4 +24,6 @@ model DailyMining {
   invitecount     Int    @default(0)
   chatminingpoint Int    @default(0)
   dailycheck      Int    @default(0)
+  memeMining      Int    @default(0)
+  linkMining      Int    @default(0)
 }

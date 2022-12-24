@@ -7,6 +7,15 @@ const {
 const { addPoint } = require(`../prismaScripts/point`);
 
 const givePointToRoles = async (client) => {
+  const now = new Date();
+  const time_diff = 9 * 60 * 60 * 1000;
+
+  const kst = new Date(now.getTime() + time_diff);
+  const date = kst.getDate();
+  const hour = kst.getHours();
+  const minute = kst.getMinutes();
+  if (date !== 16 || hour !== 18 || minute !== 0) return;
+
   const goldUsers = [];
   const ironUsers = [];
   const woodUsers = [];
@@ -43,6 +52,7 @@ const givePointToRoles = async (client) => {
       addMessage(`[Failed] <@${userId}> needs to contact admin\n`);
     }
   }
+  addMessage(`\n`);
 
   // iron
   addMessage(`<@&${roleId.iron}> IRON Shovel monthly mining!\n`);
@@ -60,6 +70,7 @@ const givePointToRoles = async (client) => {
       addMessage(`[Failed] <@${userId}> needs to contact admin\n`);
     }
   }
+  addMessage(`\n`);
 
   // wood
   addMessage(`<@&${roleId.wood}> WOOD Shovel monthly mining!\n`);
