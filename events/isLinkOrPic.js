@@ -25,6 +25,11 @@ async function readMessage(message) {
   const addData = {
     discordId: userId,
   };
+  if (
+    messageChannel !== linkMiningChannel &&
+    messageChannel !== memeMiningChannel
+  )
+    return;
 
   let getUserRes = await getUser(userId);
   if (!getUserRes) getUserRes = await createUser(userId);
