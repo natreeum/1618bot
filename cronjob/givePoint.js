@@ -20,7 +20,7 @@ const givePointToRoles = async (client) => {
   });
 
   let message = [''];
-  const addMessage = async (content) => {
+  const addMessage = (content) => {
     if (message[message.length - 1].length + content.length > 2000) {
       message.push(content);
     } else {
@@ -28,53 +28,55 @@ const givePointToRoles = async (client) => {
     }
   };
   // gold
-  await addMessage(`<@&${roleId.gold}> GOLD Shovel monthly mining!\n`);
-  goldUsers.forEach(async (userId) => {
+  addMessage(`<@&${roleId.gold}> GOLD Shovel monthly mining!\n`);
+  for (let userId of goldUsers) {
     const data = {
       discordId: userId,
       amount: rolePoint.gold,
     };
     const addRes = await addPoint(data);
     if (addRes) {
-      await addMessage(
+      addMessage(
         `[SUCCESS] <@${userId}> received **${rolePoint.gold} ${symbol}**\n`
       );
     } else {
-      await addMessage(`[Failed] <@${userId}> needs to contact admin\n`);
+      addMessage(`[Failed] <@${userId}> needs to contact admin\n`);
     }
-  });
+  }
+
   // iron
-  await addMessage(`<@&${roleId.iron}> IRON Shovel monthly mining!\n`);
-  ironUsers.forEach(async (userId) => {
+  addMessage(`<@&${roleId.iron}> IRON Shovel monthly mining!\n`);
+  for (let userId of ironUsers) {
     const data = {
       discordId: userId,
       amount: rolePoint.iron,
     };
     const addRes = await addPoint(data);
     if (addRes) {
-      await addMessage(
+      addMessage(
         `[SUCCESS] <@${userId}> received **${rolePoint.iron} ${symbol}**\n`
       );
     } else {
-      await addMessage(`[Failed] <@${userId}> needs to contact admin\n`);
+      addMessage(`[Failed] <@${userId}> needs to contact admin\n`);
     }
-  });
+  }
+
   // wood
-  await addMessage(`<@&${roleId.wood}> WOOD Shovel monthly mining!\n`);
-  woodUsers.forEach(async (userId) => {
+  addMessage(`<@&${roleId.wood}> WOOD Shovel monthly mining!\n`);
+  for (let userId of woodUsers) {
     const data = {
       discordId: userId,
       amount: rolePoint.wood,
     };
     const addRes = await addPoint(data);
     if (addRes) {
-      await addMessage(
+      addMessage(
         `[SUCCESS] <@${userId}> received **${rolePoint.wood} ${symbol}**\n`
       );
     } else {
-      await addMessage(`[Failed] <@${userId}> needs to contact admin\n`);
+      addMessage(`[Failed] <@${userId}> needs to contact admin\n`);
     }
-  });
+  }
 
   const channel = await client.channels.fetch(monthlyMiningChannel);
   message.forEach(async (e) => {
