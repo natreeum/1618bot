@@ -9,9 +9,9 @@ module.exports = {
   linkMiningAmount: 6,
   linkMiningChannel: '1055740295058292777',
   roleId: {
-    gold: '1055558429047001189',
-    iron: '1055558493886746654',
-    wood: '1055558499721027634',
+    gold: '1045533396555792495',
+    iron: '1045539859667877948',
+    wood: '1045537976115015781',
   },
   rolePoint: {
     gold: 81,
