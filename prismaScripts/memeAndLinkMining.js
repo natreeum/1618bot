@@ -5,7 +5,10 @@ const getMemeMiningCount = async (discordId) => {
     const getMemeCnt = await prisma.dailyMining.findUnique({
       where: { discordId },
     });
-    if (!getMemeCnt) return 0;
+    if (!getMemeCnt) {
+      await prisma.dailyMining.create({ data: { discordId } });
+      return 0;
+    }
     return getMemeCnt.memeMining;
   } catch (e) {
     console.log(e);
@@ -34,7 +37,10 @@ const getLinkMiningCount = async (discordId) => {
     const getLinkCnt = await prisma.dailyMining.findUnique({
       where: { discordId },
     });
-    if (!getLinkCnt) return 0;
+    if (!getLinkCnt) {
+      await prisma.dailyMining.create({ data: { discordId } });
+      return 0;
+    }
     return getLinkCnt.linkMining;
   } catch (e) {
     console.log(e);
