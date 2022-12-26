@@ -4,7 +4,7 @@ module.exports = {
   symbol: 'TANP',
   dailyInviteLimit: 50,
   memeMiningAmount: 6,
-  memeMiningChannel: '1055740196794142811',
+  memeMiningChannel: '1047339127416307732',
   memeMiningMessage: ['도굴', 'Artnapping'],
   linkMiningAmount: 6,
   linkMiningChannel: '1055740295058292777',
@@ -19,6 +19,6 @@ module.exports = {
     wood: 34,
   },
   monthlyMiningChannel: '1055736731187564624',
-  memeMiningLimit: 5,
+  memeMiningLimit: 3,
   linkMiningLimit: 3,
 };
