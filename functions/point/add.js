@@ -11,18 +11,17 @@ async function add(interaction) {
     amount: addAmount,
   };
 
-  await interaction.deferReply();
-
   // addPoint
   const addPointRes = await addPoint(data);
   if (addPointRes) {
     const userBalance = addPointRes.point;
-    await interaction.editReply(
-      `**${addAmount} ${symbol}** added to <@${selectedUserId}>\n<@${selectedUserId}> has : **${userBalance} ${symbol}**`
-    );
+    await interaction.reply({
+      content: `**${addAmount} ${symbol}** added to <@${selectedUserId}>\n<@${selectedUserId}> has : **${userBalance} ${symbol}**`,
+      ephemeral: true,
+    });
     return;
   } else {
-    await interaction.editReply('add failed');
+    await interaction.reply({ content: 'add failed', ephemeral: true });
   }
 }
 

@@ -6,8 +6,6 @@ const { symbol, dailyCheckAmount } = require(`../valueSettings`);
 async function dailyCheck(interaction) {
   const userId = interaction.user.id;
 
-  await interaction.deferReply();
-
   //get user data
   const getUserRes = await getUser(userId);
   let lastcheck;
@@ -29,7 +27,10 @@ async function dailyCheck(interaction) {
 
   // if checked
   if (lastcheck == curDate) {
-    await interaction.editReply(`You already checked today!`);
+    await interaction.reply({
+      content: `You already checked today!`,
+      ephemeral: true,
+    });
     return;
   }
 
@@ -46,11 +47,12 @@ async function dailyCheck(interaction) {
   };
   await dailycheck(data);
   const addPointRes = await addPoint(addPointData);
-  await interaction.editReply(
-    `Welcome <@${userId}>\nYou've received **${
+  await interaction.reply({
+    content: `Welcome <@${userId}>\nYou've received **${
       addPointRes.point - curPoint
-    } ${symbol}**`
-  );
+    } ${symbol}**`,
+    ephemeral: true,
+  });
   return;
 }
 

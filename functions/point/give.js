@@ -13,8 +13,6 @@ async function give(interaction) {
     amount,
   };
 
-  await interaction.deferReply();
-
   // getPoint
   const getPointRes = await getPoint(fromDiscordId);
 
@@ -23,15 +21,17 @@ async function give(interaction) {
 
   // not enough Point
   if (givePointRes == 'NotEnoughPoint') {
-    await interaction.editReply(
-      `You have not enough **${symbol}** to send\n<@${interaction.user.id}> has : **${getPointRes} ${symbol}** `
-    );
+    await interaction.reply({
+      content: `You have not enough **${symbol}** to send\n<@${interaction.user.id}> has : **${getPointRes} ${symbol}** `,
+      ephemeral: true,
+    });
     return;
   }
 
-  await interaction.editReply(
-    `<@${fromDiscordId}> send **${amount} ${symbol}** to <@${toDiscordId}>\n\n<@${fromDiscordId}> has : **${givePointRes.sender.point} ${symbol}**\n<@${toDiscordId}> has : **${givePointRes.receiver.point} ${symbol}**`
-  );
+  await interaction.reply({
+    content: `<@${fromDiscordId}> send **${amount} ${symbol}** to <@${toDiscordId}>\n\n<@${fromDiscordId}> has : **${givePointRes.sender.point} ${symbol}**\n<@${toDiscordId}> has : **${givePointRes.receiver.point} ${symbol}**`,
+    ephemeral: true,
+  });
 }
 
 module.exports = give;

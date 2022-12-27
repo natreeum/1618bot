@@ -6,19 +6,20 @@ async function show(interaction) {
   if (!selectedUserId) selectedUserId = interaction.user.id;
   else selectedUserId = selectedUserId.id;
 
-  await interaction.deferReply();
   const getPointRes = await getPoint(selectedUserId);
 
   if (getPointRes === null) {
-    await interaction.editReply(
-      `<@${selectedUserId}> is not registered. If you are not registered, Use \`/register\` command`
-    );
+    await interaction.reply({
+      content: `<@${selectedUserId}> is not registered. If you are not registered, Use \`/register\` command`,
+      ephemeral: true,
+    });
     return;
   }
 
-  await interaction.editReply(
-    `<@${selectedUserId}> has : **${getPointRes} ${symbol}**`
-  );
+  await interaction.reply({
+    content: `<@${selectedUserId}> has : **${getPointRes} ${symbol}**`,
+    ephemeral: true,
+  });
 }
 
 module.exports = show;
