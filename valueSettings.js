@@ -19,6 +19,6 @@ module.exports = {
     wood: 34,
   },
   monthlyMiningChannel: '1055736731187564624',
-  memeMiningLimit: 3,
+  memeMiningLimit: 5,
   linkMiningLimit: 3,
 };
