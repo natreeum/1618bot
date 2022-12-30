@@ -43,9 +43,10 @@ async function readMessage(message) {
       addData['amount'] = linkMiningAmount;
       const addRes = await addPoint(addData);
       await addLinkMiningCount(userId);
-      await message.channel.send(
-        `Link Mining Success! **${linkMiningAmount} ${symbol}** Added\n<@${userId}> Balance : **${addRes.point} ${symbol}**`
-      );
+      // await message.channel.send(
+      //   `Link Mining Success! **${linkMiningAmount} ${symbol}** Added\n<@${userId}> Balance : **${addRes.point} ${symbol}**`
+      // );
+      await message.react('1058252842714017942');
     } else return;
     return;
   }
@@ -62,9 +63,10 @@ async function readMessage(message) {
     addData['amount'] = memeMiningAmount;
     const addRes = await addPoint(addData);
     await addMemeMiningCount(userId);
-    await message.channel.send(
-      `Meme Mining Success! **${memeMiningAmount} ${symbol}** Added\n<@${userId}> Balance : **${addRes.point} ${symbol}**`
-    );
+    // await message.channel.send(
+    //   `Meme Mining Success! **${memeMiningAmount} ${symbol}** Added\n<@${userId}> Balance : **${addRes.point} ${symbol}**`
+    // );
+    await message.react('1058252842714017942');
     return;
   }
 }
