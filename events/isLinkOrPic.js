@@ -33,6 +33,7 @@ async function readMessage(message) {
 
   let getUserRes = await getUser(userId);
   if (!getUserRes) getUserRes = await createUser(userId);
+  const emoji = message.guild.emojis.cache.find((e) => e.name === 'goldshovel');
 
   // linkMining
   if (messageChannel === linkMiningChannel) {
@@ -46,7 +47,7 @@ async function readMessage(message) {
       // await message.channel.send(
       //   `Link Mining Success! **${linkMiningAmount} ${symbol}** Added\n<@${userId}> Balance : **${addRes.point} ${symbol}**`
       // );
-      message.react('⛏️');
+      message.react(emoji);
     } else return;
     return;
   }
@@ -66,7 +67,7 @@ async function readMessage(message) {
     // await message.channel.send(
     //   `Meme Mining Success! **${memeMiningAmount} ${symbol}** Added\n<@${userId}> Balance : **${addRes.point} ${symbol}**`
     // );
-    message.react('⛏️');
+    message.react(emoji);
     return;
   }
 }
