@@ -46,7 +46,7 @@ async function readMessage(message) {
       // await message.channel.send(
       //   `Link Mining Success! **${linkMiningAmount} ${symbol}** Added\n<@${userId}> Balance : **${addRes.point} ${symbol}**`
       // );
-      await message.react('1058252842714017942');
+      message.react('1058252842714017942');
     } else return;
     return;
   }
@@ -66,7 +66,7 @@ async function readMessage(message) {
     // await message.channel.send(
     //   `Meme Mining Success! **${memeMiningAmount} ${symbol}** Added\n<@${userId}> Balance : **${addRes.point} ${symbol}**`
     // );
-    await message.react('1058252842714017942');
+    message.react('1058252842714017942');
     return;
   }
 }
