@@ -52,24 +52,21 @@ async function readMessage(message) {
     return;
   }
   // memeMining
-  if (messageChannel === memeMiningChannel) {
-    const messageAttachmentsCnt = message.attachments.size;
-    if (
-      messageAttachmentsCnt === 0 ||
-      !memeMiningMessage.includes(messageContent)
-    )
-      return;
-    const memeCnt = await getMemeMiningCount(userId);
-    if (memeCnt >= memeMiningLimit) return;
-    addData['amount'] = memeMiningAmount;
-    const addRes = await addPoint(addData);
-    await addMemeMiningCount(userId);
-    // await message.channel.send(
-    //   `Meme Mining Success! **${memeMiningAmount} ${symbol}** Added\n<@${userId}> Balance : **${addRes.point} ${symbol}**`
-    // );
-    message.react(emoji);
-    return;
-  }
+  // if (messageChannel === memeMiningChannel) {
+  //   const messageAttachmentsCnt = message.attachments.size;
+  //   if (
+  //     messageAttachmentsCnt === 0 ||
+  //     !memeMiningMessage.includes(messageContent)
+  //   )
+  //     return;
+  //   const memeCnt = await getMemeMiningCount(userId);
+  //   if (memeCnt >= memeMiningLimit) return;
+  //   addData['amount'] = memeMiningAmount;
+  //   const addRes = await addPoint(addData);
+  //   await addMemeMiningCount(userId);
+  //   message.react(emoji);
+  //   return;
+  // }
 }
 
 module.exports = { readMessage };
